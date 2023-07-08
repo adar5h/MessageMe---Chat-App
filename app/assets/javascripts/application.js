@@ -19,4 +19,7 @@
 
 $(document).on('turbolinks:load', function(){ // letting the DOM load
     $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function() {
+    $(this).closest('.message').transition('fade');
+    });
 })
