@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in? # Enabling the contoller methods to views for view level restrictions
 
     def current_user 
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    def require_user
+    def require_user # controller level restriction
         if !logged_in?
             flash[:error] = "You must be logged in to perform this action."
             redirect_to login_path
